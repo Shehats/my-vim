@@ -101,7 +101,6 @@ nnoremap <C-l> <C-w>l " Press i to enter insert mode, and ii to exit insert mode
 :vnoremap jk <Esc> 
 :vnoremap kj <Esc>
 " CoC extensions
-let g:coc_global_extensions = ['coc-tsserver']
 map <M-b> :NERDTreeToggle<CR>
 nnoremap <silent> <leader>c} V}:call NERDComment('x', 'toggle')<CR>
 nnoremap <silent> <leader>c{ V{:call NERDComment('x', 'toggle')<CR>
@@ -172,13 +171,6 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 " functions
 " Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
 " file, and we're not in vimdiff
-function! SyncTree()
-  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
-    NERDTreeFind
-    wincmd p
-  endif
-endfunction
-
 " Coc stuff
 " from readme
 " if hidden is not set, TextEdit might fail.
@@ -282,6 +274,15 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" coc config
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint', 
+  \ 'coc-prettier', 
+  \ 'coc-json', 
+  \ ]
 
 " Using CocList
 " Show all diagnostics
@@ -300,3 +301,24 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" Ale configs
+let g:ale_disable_lsp = 1
+" let g:ale_sign_column_always = 1
+" let g:ale_sign_error = '>>'
+" let g:ale_sign_warning = '--'
+" highlight clear ALEErrorSign
+" highlight clear ALEWarningSign
+" Set this in your vimrc file to disabling highlighting
+" let g:ale_set_highlights = 0
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+" Write this in your vimrc file
+" let g:ale_lint_on_text_changed = 'never'
+" let g:ale_lint_on_insert_leave = 0
+" You can disable this option too
+" if you don't want linters to run on opening a file
+" let g:ale_lint_on_enter = 0
+" Write this in your vimrc file
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+
