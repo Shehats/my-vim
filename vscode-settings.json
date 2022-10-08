@@ -1,0 +1,23 @@
+{
+  "vim.vimrc.enable": true,
+  "vim.vimrc.path": "/home/sal/.vim/.vimrc",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "editor.suggestSelection": "first",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "workbench.startupEditor": "none",
+  "java.autobuild.enabled": true,
+  "java.codeGeneration.generateComments": true,
+  "java.completion.enabled": true,
+  "vim.autoindent": true
+}
